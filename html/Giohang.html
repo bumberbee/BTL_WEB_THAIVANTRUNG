@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng</title>
+
+  <!-- Liên kết CSS -->
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../js/bootstrap.css">
+  <link rel="stylesheet" href="../js/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/Login_Signup.css">
+
+  <!-- Liên kết JS -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/Login_signup.js"></script>
+
+  <style>
+    #cart-container {
+      padding: 40px 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      color: #e61d1d;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .cart-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-item h4 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    .cart-item p {
+      font-size: 14px;
+      color: #777;
+      margin: 5px 0;
+    }
+
+    .remove-btn {
+      background-color: #e61d1d;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background-color: #b51a1a;
+    }
+
+    .cart-total {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+      color: #333;
+    }
+
+    .cart-total p {
+      margin: 10px 0;
+    }
+
+    .empty-cart {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      color: #e61d1d;
+    }
+
+    footer {
+      background-color: #333;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+    footer {
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  padding: 25px 0;
+  color: white;
+  text-align: center;
+  margin-top: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #fff;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content p {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <header>
+      <div id="navheader">
+        <ul>
+          <li><a href="../html/home.html">Trang Chủ</a></li>
+          <li><a href="#">Thiệp Đám Cưới</a></li>
+          <li><a href="#">Thiệp Thôi Nôi</a></li>
+          <li><a href="#">Thiệp Giáng Sinh</a></li>
+          <li><a href="#">Liên Hệ</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section id="cart-container">
+      <h2>Giỏ Hàng Của Bạn</h2>
+
+      <div id="cart-items"></div>
+
+      <div class="cart-total">
+        <p>Tổng cộng: <span id="total-price" style="color: #e61d1d; font-size: 22px;font-family: 'Courier New', Courier, monospace;">0đ</span></p>
+      </div>
+      
+      
+
+      <div class="empty-cart" id="empty-cart-message" style="display:none;">
+        <p>Giỏ hàng của bạn hiện đang trống.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright © 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-items');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const totalPriceElement = document.getElementById('total-price');
+  
+    function updateCartDisplay() {
+      cartContainer.innerHTML = '';
+      let totalPrice = 0;
+  
+      if (cart.length === 0) {
+        cartContainer.style.display = 'none';
+        emptyCartMessage.style.display = 'block';
+        totalPriceElement.textContent = '0đ';
+        return;
+      }
+  
+      cartContainer.style.display = 'block';
+      emptyCartMessage.style.display = 'none';
+  
+      cart.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('cart-item');
+  
+        // Xử lý giá trị sảnpham
+        const priceValue = typeof product.price === 'number'
+          ? product.price
+          : parseInt(product.price.toString().replace(/[^\d]/g, ''));
+  
+        productElement.innerHTML = `
+          <div>
+            <h4>${product.name}</h4>
+            <p>Mã SP: ${product.id}</p>
+            <p>Số lượng: ${product.quantity}</p>
+          </div>
+          <div>
+            <p>${priceValue.toLocaleString()}đ</p>
+            <button class="remove-btn" data-id="${product.id}">Xóa</button>
+          </div>
+        `;
+        cartContainer.appendChild(productElement);
+        totalPrice += priceValue * product.quantity;
+      });
+  
+      totalPriceElement.textContent = totalPrice.toLocaleString() + 'đ';
+    }
+  
+    //  bấm nút "Xóa"
+    cartContainer.addEventListener('click', function (e) {
+      if (e.target && e.target.classList.contains('remove-btn')) {
+        const productId = e.target.getAttribute('data-id');
+        cart = cart.filter(product => product.id.toString() !== productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+      }
+    });
+  
+   
+    updateCartDisplay();
+  </script>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Thiệp Online. All rights reserved.</p>
+      <p>Designed with ❤️ by Your Team</p>
+    </div>
+    <footer style="border: 3px solid red;text-align: center;">
+      <p style="margin-top: 15px;">BÀI TẬP LỚN : HỆ THỐNG VÀ CÔNG NGHỆ WEB - DHKHMT18BTT - 22696241 - THÁI VĂN TRUNG</p>
+    </footer>
+  </footer>
+  
+  
+</body>
+</html>

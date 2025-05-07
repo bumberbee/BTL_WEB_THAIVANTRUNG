@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../js/bootstrap.css">
+  <link rel="stylesheet" href="../js/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/Login_Signup.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <style>
+
+
+  </style>
+  
+</head>
+<body>
+
+  <header>
+
+    <div id="personal-info">
+      👤 Thái Văn Trung<br>
+      🎓 MSSV: 22696241
+    </div>
+
+    <div id="auth-buttons">
+      <button id="login-btn">Đăng nhập</button>
+      <button id="signup-btn">Đăng ký</button>
+
+    </div>
+
+   
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-login">&times;</span>
+        <h3>Đăng nhập</h3>
+        <form id="login-form">
+          <label for="username">Tài khoản:</label>
+          <input type="text" id="username" name="username" required>
+          <div id="login-username-error" class="error-message"></div>
+
+          <label for="password">Mật khẩu:</label>
+          <input type="password" id="password" name="password" required>
+          <div id="login-password-error" class="error-message"></div>
+
+          <button type="submit">Đăng nhập</button>
+        </form>
+        <p class="switch">Chưa có tài khoản? <a href="#" id="switch-to-signup">Đăng ký ngay</a></p>
+      </div>
+    </div>
+
+    
+    <div id="signup-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-signup">&times;</span>
+        <h3>Đăng ký</h3>
+        <form id="signup-form">
+          <label for="new-username">Tên tài khoản:</label>
+          <input type="text" id="new-username" name="new-username" required>
+          <div id="signup-username-error" class="error-message"></div>
+
+          <label for="new-password">Mật khẩu:</label>
+          <input type="password" id="new-password" name="new-password" required>
+          <div id="signup-password-error" class="error-message"></div>
+
+          <label for="phone">SĐT:</label>
+          <input type="tel" id="phone" name="phone" required>
+          <div id="signup-phone-error" class="error-message"></div>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <div id="signup-email-error" class="error-message"></div>
+
+          <button type="submit">Đăng ký</button>
+        </form>
+        <p class="switch">Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a></p>
+      </div>
+    </div>
+
+
+    <div id="user-info" style="
+    display: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+    position: relative;">
+    
+    <span style="
+      position: absolute;
+      left: 350px;
+      top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: aliceblue;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-shadow: 1px 1px 2px #ccc;">
+      ✨ Chào mừng đến với thế giới thiệp xinh ✨
+    </span>
+  
+    <span id="user-name">👤</span>
+    <a href="../html/Giohang.html" style="text-decoration: none;"><span id="cart-count" style="color: black;">🛒</span></a>
+    
+    <button id="logout-btn" class="logout-button">Đăng xuất</button>
+
+  </div>
+  
+    
+    
+
+    <div id="navheader">
+      <ul>
+        <li><a href="../html/home.html">Trang Chủ</a></li>
+        <li>
+          <a href="#">Thiệp Đám Cưới</a>
+          <ul id="sub_menu_wedding">
+            <li><a href="../html/Thiepcuoigiay.html">Thiệp giấy</a></li>
+            <li><a href="../html/Thiepdamcuoi3d.html">Thiệp 3D</a></li>
+            <li><a href="../html/Thiepdamcuoilux.html">Thiệp Luxury</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Thiệp Thôi Nôi</a>
+          <ul id="submenu_thoinoi">
+            <li><a href="#">Thiệp giấy</a></li>
+            <li><a href="#">Thiệp 3D</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">Thiệp Giáng Sinh</a>
+          <ul id="submenu_giangsinh">
+            <li><a href="#">Thiệp giấy</a></li>
+            <li><a href="#">Thiệp 3D</a></li>
+          </ul>
+        </li>
+
+
+        <li>
+          <a href="#">Thiệp Sinh Nhật</a>
+          <ul id="submenu_sinhnhat">
+            <li><a href="#">Thiệp giấy</a></li>
+            <li><a href="#">Thiệp 3D</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Liên Hệ</a>
+          <ul id="submenu_lienhe">
+            <li><a href="#">Phone/Zalo : 0878634443</a></li>
+            <li><a href="#">Email : tt721886@gmail.com</a></li>
+          </ul>
+        
+        
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="section1">
+    <div class="intro-container">
+      <div class="intro-text">
+        <h2>Chào mừng đến với Thế giới Thiệp Online!</h2>
+        <p>
+          Chúng tôi cung cấp các mẫu thiệp độc đáo cho các dịp đặc biệt như 
+          <strong>thiệp cưới</strong>, <strong>thiệp Giáng Sinh</strong>, 
+          và <strong>thiệp thôi nôi</strong>. Mỗi sản phẩm là một thông điệp yêu thương
+          được thiết kế tỉ mỉ và đầy cảm xúc.
+        </p>
+        <p>
+          Hãy để những tấm thiệp của chúng tôi thay bạn gửi lời chúc tốt đẹp 
+          đến những người thân yêu.
+        </p>
+      </div>
+      <div class="intro-slider">
+        <img id="slider-image" src="../img/home1.jpg" alt="Thiệp mẫu">
+      </div>
+    </div>
+  </section>
+
+  <section id="section2">
+
+    <!-- -----------------------------------------------------------ĐÁM CƯỚI ----------------------------------- -->
+     <!-- -------------THIỆP GIẤY------------- -->
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_paper/p1.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: WD1</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="WD1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_paper/p2.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới</h4>
+          <p>Giá: 12.500đ</p>
+          <p>Mã SP: WD2</p>
+          <button class="add-to-cart" data-name="" data-price="12500" data-id="WD2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_paper/p3.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới</h4>
+          <p>Giá: 11.000đ</p>
+          <p>Mã SP: WD3</p>
+          <button class="add-to-cart" data-name="" data-price="11000" data-id="WD3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+<!-- -------------THIỆP 3D--------------------- -->
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_3D/3d1.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới 3D</h4>
+          <p>Giá: 14.000đ</p>
+          <p>Mã SP: WD3D1</p>
+          <button class="add-to-cart" data-name="" data-price="14000" data-id="WD3D1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_3D/3d2.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới 3D</h4>
+          <p>Giá: 15.000đ</p>
+          <p>Mã SP: WD3D2</p>
+          <button class="add-to-cart" data-name="" data-price="15000" data-id="WD3D2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_3D/3d3.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới 3D</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: WD3D3</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="WD3D3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+<!-- ------------------------THIỆP LUXURY-------------------------- -->
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_Luxury/rongvangluxury.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới Luxury</h4>
+          <p>Giá: 15.000đ</p>
+          <p>Mã SP: WDL1</p>
+          <button class="add-to-cart" data-name="" data-price="15000" data-id="WDL1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_Luxury/lux3.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới Luxury</h4>
+          <p>Giá: 18.000đ</p>
+          <p>Mã SP: WDL2</p>
+          <button class="add-to-cart" data-name="" data-price="18000" data-id="WDL2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Wedding/Wedding_Luxury/lux2.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp đám cưới Luxury</h4>
+          <p>Giá: 18.000đ</p>
+          <p>Mã SP: WDL3</p>
+          <button class="add-to-cart" data-name="" data-price="18000" data-id="WDL3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+
+
+
+<!-- --------------------------------THIỆP THÔI NÔI----------------- -->
+ <!-- ---------THIỆP GIẤY-------------------- -->
+
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/giay1.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi giấy</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: TNG1</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="TNG1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/giay3.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi giấy</h4>
+          <p>Giá: 8.000đ</p>
+          <p>Mã SP: TNG2</p>
+          <button class="add-to-cart" data-name="" data-price="8000" data-id="TNG2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/giay2.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi giấy</h4>
+          <p>Giá: 9.000đ</p>
+          <p>Mã SP: TNG3</p>
+          <button class="add-to-cart" data-name="" data-price="9000" data-id="TNG3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/3d1.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi 3D</h4>
+          <p>Giá: 10.000đ</p>
+          <p>Mã SP: TN3D1</p>
+          <button class="add-to-cart" data-name="" data-price="10000" data-id="TN3D1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/3d2.webp" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi 3D</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: TN3D2</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="TN3D2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/ThoiNoi/3d3.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp thôi nôi 3D</h4>
+          <p>Giá: 14.000đ</p>
+          <p>Mã SP: TN3D3</p>
+          <button class="add-to-cart" data-name="" data-price="14000" data-id="TN3D3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+<!-- -----------------------THIỆP GIÁNG SINH----------------------- -->
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/giay1.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: GSG1</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="GSG1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/giay2.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 13.000đ</p>
+          <p>Mã SP: GSG2</p>
+          <button class="add-to-cart" data-name="" data-price="13000" data-id="GSG2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/giay3.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 11.500đ</p>
+          <p>Mã SP: GSG3</p>
+          <button class="add-to-cart" data-name="" data-price="11500" data-id="GSG3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/giay4.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: GSG4</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="GSG4">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/3d1.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: GS3D1</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="GS3D1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/3d2.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 16.000đ</p>
+          <p>Mã SP: GS3D2</p>
+          <button class="add-to-cart" data-name="" data-price="16000" data-id="GS3D2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/3d3.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: GS3D3</p>
+          <button class="add-to-cart" data-name="" data-price="12000" data-id="GS3D3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+    
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Giangsinh/3d4.jfif" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Giáng Sinh</h4>
+          <p>Giá: 12.000đ</p>
+          <p>Mã SP: GS3D4</p>
+          <button class="add-to-cart" data-name="" data-price="1200000" data-id="GS3D4">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+
+    <!-- -------------------------------THIỆP SINH NHẬT---------------------------  -->
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sng1.png" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 6.000đ</p>
+          <p>Mã SP: SNG1</p>
+          <button class="add-to-cart" data-name="" data-price="6000" data-id="SNG1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sng2.jpg" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 7.000đ</p>
+          <p>Mã SP: SNG2</p>
+          <button class="add-to-cart" data-name="" data-price="7000" data-id="SNG2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sng1.png" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 6.500đ</p>
+          <p>Mã SP: SNG3</p>
+          <button class="add-to-cart" data-name="" data-price="6500" data-id="SNG3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sn3d1.png" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 8.000đ</p>
+          <p>Mã SP: SN3D1</p>
+          <button class="add-to-cart" data-name="" data-price="8000" data-id="SN3D1">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sn3d2.png" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 9.000đ</p>
+          <p>Mã SP: SN3D2</p>
+          <button class="add-to-cart" data-name="" data-price="9000" data-id="SN3D2">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+
+    <a href="../html/Giohang.html">
+      <div class="product-box">
+        <img src="../img/Sinhnhat/sn3d3.png" alt="Tên mẫu" class="product-image" />
+        <div class="product-info">
+          <h4>Tên mẫu: Thiệp Sinh Nhật</h4>
+          <p>Giá: 8.500đ</p>
+          <p>Mã SP: SN3D3</p>
+          <button class="add-to-cart" data-name="" data-price="8500" data-id="SN3D3">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <section id="section3">
+    <div class="footer-content">
+        <div class="cta">
+            <h2>Khám Phá Thêm Các Mẫu Thiệp Đặc Biệt</h2>
+            <p>Đừng bỏ lỡ những mẫu thiệp mời mới nhất của chúng tôi! Chúng tôi luôn có những thiết kế độc đáo cho mọi dịp lễ.</p>
+            <a href="../html/home.html" class="cta-btn">Khám Phá Ngay</a>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Thông Tin Liên Hệ</h3>
+            <p>Email: tt721886@gmail.com</p>
+            <p>Điện thoại: 0878634443</p>
+            <p>Địa chỉ: 537 Vườn Lài, An Phú Đông</p>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank" class="social-icon">Facebook</a>
+            <a href="https://instagram.com" target="_blank" class="social-icon">Instagram</a>
+            <a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Thiệp Mời Online. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </div>
+</section>
+
+<footer style="border: 3px solid red;margin-top: 200px;text-align: center;">
+  <p style="margin-top: 15px;">BÀI TẬP LỚN : HỆ THỐNG VÀ CÔNG NGHỆ WEB - DHKHMT18BTT - 22696241 - THÁI VĂN TRUNG</p>
+</footer>
+
+
+
+
+  <script>
+    const images = [
+      '../img/home1.jpg',
+      '../img/home2.jpg',
+      '../img/home3.jpg',
+      '../img/home4.jpg',
+      '../img/home5.jpg'
+    ];
+
+    let index = 0;
+    const sliderImg = document.getElementById("slider-image");
+
+    setInterval(() => {
+      sliderImg.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % images.length;
+        sliderImg.src = images[index];
+        sliderImg.style.opacity = 1;
+      }, 1000);
+    }, 3000);
+  </script>
+
+  <!-- JS Hiển thị người dùng -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // So sánh chính xác
+      const username = localStorage.getItem("username");
+  
+      const authButtons = document.getElementById("auth-buttons");
+      const userInfo = document.getElementById("user-info");
+      const nameDisplay = document.getElementById("user-name");
+  
+      if (isLoggedIn && username) {
+        authButtons.style.display = "none";
+        userInfo.style.display = "flex";
+        if (nameDisplay) {
+          nameDisplay.textContent = `👤 ${username}`;
+        }
+      } else {
+        // Hiển thị lại nút đăng nhập / đăng ký
+        authButtons.style.display = "block";
+        userInfo.style.display = "none";
+      }
+    });
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.add-to-cart');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault(); // Ngăn thẻ <a> chuyển trang ngay lập tức
+        e.stopPropagation(); // Ngăn sự kiện nổi bọt
+
+        const id = this.getAttribute('data-id');
+        const rawName = this.getAttribute('data-name');
+        const name = rawName && rawName.trim() !== ""
+          ? rawName
+          : this.closest('.product-info')?.querySelector('h4')?.textContent.replace('Tên mẫu: ', '') || 'Không tên';
+        const price = parseInt(this.getAttribute('data-price')) || 0;
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Kiểm tra sản phẩm đã tồn tại hay chưa
+        const existingProduct = cart.find(p => p.id === id);
+        if (!existingProduct) {
+          cart.push({ id, name, price, quantity: 1 });
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert('Đã thêm vào giỏ hàng!');
+        } else {
+          existingProduct.quantity += 1;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert('Đã tăng số lượng sản phẩm trong giỏ!');
+        }
+
+        // Chuyển đến trang giỏ hàng
+        // window.location.href = "../html/Giohang.html";
+      });
+    });
+  });
+</script>
+
+
+  
+  <script src="../js/Login_signup.js"></script>
+
+</body>
+</html>
